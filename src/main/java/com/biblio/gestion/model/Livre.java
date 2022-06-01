@@ -2,7 +2,9 @@ package com.biblio.gestion.model;
 
 import javax.persistence.Column;  
 import javax.persistence.Entity;  
-import javax.persistence.Id;  
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;  
 //mark class as an Entity   
 @Entity  
@@ -16,8 +18,12 @@ public class Livre
 	private int id_livre;  
 	@Column  
 	private String name_livre;  
-	@Column  
-	private String id_author;  
+
+	@ManyToOne
+	@JoinColumn(name="id_auteur", nullable=false)
+	private Auteur auteur;
+	
+	
 	@Column  
 	private float prix;
 	public int getId_livre() {
@@ -32,23 +38,25 @@ public class Livre
 	public void setName_livre(String name_livre) {
 		this.name_livre = name_livre;
 	}
-	public String getId_author() {
-		return id_author;
-	}
-	public void setId_author(String id_author) {
-		this.id_author = id_author;
-	}
+
 	public float getPrix() {
 		return prix;
 	}
 	public void setPrix(float prix) {
 		this.prix = prix;
 	}
+	public Auteur getAuteur() {
+		return auteur;
+	}
+	public void setAuteur(Auteur auteur) {
+		this.auteur = auteur;
+	}
 	@Override
 	public String toString() {
-		return "Livre [id_livre=" + id_livre + ", name_livre=" + name_livre + ", id_author=" + id_author + ", prix="
-				+ prix + "]";
-	}	
+		return "Livre [id_livre=" + id_livre + ", name_livre=" + name_livre + ", auteur=" + auteur + ", prix=" + prix
+				+ "]";
+	}
+
 	
 	
 	

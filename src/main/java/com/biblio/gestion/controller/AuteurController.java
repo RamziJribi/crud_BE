@@ -45,7 +45,7 @@ public class AuteurController
 	}  
 	
 	//creating post mapping that post the book detail in the database  
-	@PostMapping("/livres")  
+	@PostMapping("/auteur")  
 	private int saveAuteur(@RequestBody Auteur auteur)   
 	{  
 		auteurServices.saveOrUpdate(auteur);  
